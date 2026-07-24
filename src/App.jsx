@@ -69,7 +69,8 @@ const projects = [
     title: 'Portfolio Website',
     description: 'This personal portfolio - a premium, dark-themed site built with React and Tailwind CSS, focused on clarity and smooth motion design.',
     stack: ['React', 'Tailwind CSS', 'Framer Motion'],
-    links: { github: '#', demo: '#' },
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
+    links: { github: 'https://github.com/Anupa-IN/Anupa', demo: '#' },
   },
 ]
 
@@ -368,9 +369,18 @@ function App() {
                 whileHover={{ y: -6 }}
                 className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition"
               >
-                <div className="relative aspect-video overflow-hidden rounded-2xl border bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a]" style={{ borderColor: `${ACCENT}26` }}>
-                  <div className="absolute inset-0 opacity-40 transition-opacity duration-500 group-hover:opacity-70" style={{ background: `radial-gradient(circle at 30% 20%, ${ACCENT}26, transparent 60%)` }} />
-                </div>
+                <a href={project.links.github} className="block cursor-pointer">
+                  <div className="relative aspect-video overflow-hidden rounded-2xl border bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a]" style={{ borderColor: `${ACCENT}26` }}>
+                    {project.image ? (
+                      <>
+                        <img src={project.image} alt={project.title} className="h-full w-full object-cover opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-[#0a0a0a]/60" />
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 opacity-40 transition-opacity duration-500 group-hover:opacity-70" style={{ background: `radial-gradient(circle at 30% 20%, ${ACCENT}26, transparent 60%)` }} />
+                    )}
+                  </div>
+                </a>
                 <h3 className="mt-6 text-xl font-semibold text-white">{project.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#a3a3a3]">{project.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
